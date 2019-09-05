@@ -1,181 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Accounts | HYUNWOO</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Material+Icons" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>logo.png">
+    <title>Accounts | EDCAN</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/font-nanumsquare/1.0.0/nanumsquare.css?ver=4.9.8" />
-    <link rel="stylesheet" href="https://unpkg.com/vuetify/dist/vuetify.min.css" />
-    <style>
-      html {
-        height: 100%;
-        overflow: hidden;
-      }
-      body {
-        background: #fafafa;
-        word-break: keep-all;
-      }
-      .body,
-      .application,
-      .display-4,
-      .display-3,
-      .display-2,
-      .display-1,
-      .headline,
-      .title {
-        font-family: "Nanum Square", "Roboto", sans-serif;
-      }
-      .logo-white {
-        padding: 14px;
-        height: 30px;
-        background: url(logo-white.png) center no-repeat;
-        background-size: contain;
-      }
-      .divider {
-        height: 0;
-        margin: 12px 0 6px 0;
-        border-bottom: 2px solid #fff;
-      }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+    <script src="/__/firebase/6.5.0/firebase-app.js"></script>
+    <script src="/__/firebase/6.5.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/init.js"></script>
+</script>
   </head>
   <body>
-    <main>
-      <v-app dark>
-        <v-container>
-          <v-btn href="https://root.hyunwoo.kim:5001/webman/3rdparty/DirectoryServer/profile.cgi" target="_blank"><div v-text="'비밀번호 변경'"></div></v-btn>
-          <v-layout class="mt-4" justify-center column>
-            <h1 class="mx-3 display-2" v-text="'Register'"></h1>
-            <v-flex xs10 sm5>
-              <div :class="'ml-3 divider'"></div>
-            </v-flex>
-            <v-layout class="mx-3" align-center justify-start fill-height>
-              <span :class="'logo-white'"></span>
-              <h6 class="ml-2 title" v-text="'EDCAN Wi-Fi'"></h6>
-            </v-layout>
-          </v-layout>
-          <v-form ref="form" v-model="form" onsubmit="return false">
-            <v-layout class="mt-4" align-center justify-center>
-              <v-flex xs11 sm10 md8>
-                <v-layout class="mt-4" justify-space-around column>
-                  <v-text-field v-model="name" label="성명" color="#00B8D4" :rules="[rules.required]" autofocus required></v-text-field>
-                  <v-text-field v-model="id" label="사용자 ID" color="#00B8D4" :rules="[rules.required]" hint="Wi-Fi 네트워크 로그인에 사용되는 ID 입니다." required></v-text-field>
-                  <v-text-field v-model="password" label="비밀번호" color="#00B8D4" :rules="[rules.required]" hint="타 사이트와 동일한 비밀번호를 사용하지 마십시오." required></v-text-field>
-                  <v-text-field v-model="phone" label="전화번호" color="#00B8D4" :rules="[rules.required]" hint="하이픈을 입력하지 마십시오." maxlength="11" type="tel" required></v-text-field>
-                  <v-text-field v-model="email" label="이메일" color="#00B8D4" :rules="[rules.required]" type="email" required></v-text-field>
-                  <v-btn flat color="#00B8D4" @click="loader = 'loading', submit()" :disabled="loading || !form" :loading="loading"><span v-text="'제출'"></span><v-icon class="ml-3" v-text="'send'"></v-icon></v-btn>
-                </v-layout>
-              </v-flex>
-            </v-layout>
-          </v-form>
-
-          <v-dialog v-model="dialog" persistent max-width="600px">
-            <v-card>
-              <v-card-title> <span class="headline mr-2" v-text="'저장됨'"></span><v-icon v-text="'check'"></v-icon> </v-card-title>
-              <v-card-text>
-                <v-layout align-center justify-center>
-                  <span v-html="'사용자 등록을 요청하였습니다.<br>등록이 승인되면 SMS로 알려드리겠습니다.'"></span>
-                </v-layout>
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn light @click="dialog = false" onclick="location.replace('/')" v-text="'승인'"></v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-        </v-container>
-      </v-app>
-    </main>
     <noscript>
-      <style>
-        main {
-          display: none;
-        }
-      </style>
-      <div style="display:flex;align-items:center;justify-content:center;position:fixed;width:100%;height:100%;top:0;left:0;background:#1E1E1E;color:white;font-family:'Nanum Square',sans-serif;z-index:1000;">
-        <h1>
-          EDCANURL Shortner 구동을 위해서 JavaScript가 필요합니다.
-        </h1>
-      </div>
+      <strong>JavaScript를 활성화하여 주십시오.</strong>
     </noscript>
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/vuetify/dist/vuetify.min.js"></script>
-    <script src="/__/firebase/5.9.1/firebase-app.js"></script>
-    <script src="/__/firebase/5.9.1/firebase-auth.js"></script>
-    <script src="/__/firebase/5.9.1/firebase-firestore.js"></script>
-    <script>
-      if (/*@cc_on!@*/ false) {
-        location.replace("https://cdn.hyunwoo.kim/no_IE/#Accounts");
-      }
-      firebase.initializeApp({
-        apiKey: "AIzaSyCJoObQ0uFtEfFxjBtUK_Tbu46fKsAM3Eg",
-        authDomain: "hyunwoo-accounts.firebaseapp.com",
-        databaseURL: "https://hyunwoo-accounts.firebaseio.com",
-        projectId: "hyunwoo-accounts",
-        storageBucket: "hyunwoo-accounts.appspot.com",
-        messagingSenderId: "91543963011"
-      });
-      firebase.auth().signInAnonymously();
-      const dbRef = firebase.firestore().collection("Accounts"),
-        hashStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      var v = new Vue({
-        el: "v-app",
-        data: () => ({
-          dialog: false,
-          loader: null,
-          loading: false,
-          form: false,
-          hash: "",
-          name: "",
-          id: "",
-          password: "",
-          phone: "",
-          email: "",
-          rules: {
-            required: value => !!value || "필수 사항입니다."
-          }
-        }),
-
-        watch: {
-          loader() {
-            const l = this.loader;
-            this[l] = !this[l];
-            setTimeout(() => (this[l] = false), 5000);
-            this.loader = null;
-          }
-        },
-
-        methods: {
-          submit() {
-            this.hash = "";
-            for (let i = 0; i < 4; i++) {
-              this.hash += hashStr.charAt(Math.floor(Math.random() * hashStr.length));
-            }
-            dbRef
-              .doc(v.name + "_" + v.hash)
-              .set({
-                created: firebase.firestore.FieldValue.serverTimestamp(),
-                name: v.name,
-                id: v.id,
-                password: v.password,
-                phone: v.phone,
-                email: v.email
-              })
-              .then(function() {
-                v.dialog = true;
-                v.name = "";
-                v.id = "";
-                v.password = "";
-                v.phone = "";
-                v.email = "";
-              })
-              .catch(function(error) {
-                alert("오류가 발생했습니다. 다시 시도하십시오.");
-                console.log("제출하지 못하였습니다: ", error);
-              });
-          }
-        }
-      });
-    </script>
+    <div id="app"></div>
   </body>
 </html>
