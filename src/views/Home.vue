@@ -8,7 +8,7 @@
               <v-btn light href="/login">비밀번호 변경</v-btn>
             </v-layout>
             <v-form v-model="form" onsubmit="return false">
-              <v-layout align-center justify-center>
+              <v-layout align-center justify-center class="mb-4">
                 <v-img
                   src="../assets/logo-white.png"
                   lazy-src="../assets/logo-white.png"
